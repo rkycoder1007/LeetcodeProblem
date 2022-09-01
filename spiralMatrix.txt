@@ -1,0 +1,56 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int row=matrix.length;
+        int column=matrix[0].length;
+        int row_start=0;
+        int row_end=row-1;
+        int column_start=0;
+        int column_end=column-1;
+        int i=0;
+        
+        //i=0 means traversing in row wise from left to right
+        //i=1 means traversing column wise top to bottm
+        //i=2 means traversing row wise right to left
+        //i=3 means traversing column wise from bottom to top
+        List<Integer> li=new ArrayList<>();
+        while(row_start<=row_end && column_start<=column_end){
+            if(i==0){
+                int k=column_start;
+                while(k<=column_end){
+                    li.add(matrix[row_start][k]);
+                        k++;
+                }
+                i=(i+1)%4;
+                row_start++;
+            }
+            else if(i==1){
+                int k=row_start;
+                while(k<=row_end){
+                    li.add(matrix[k][column_end]);
+                    k++;
+                }
+                column_end--;
+                i=(i+1)%4;
+            }
+            else if(i==2){
+                int k=column_end;
+                while(k>=column_start){
+                    li.add(matrix[row_end][k]);
+                    k--;
+                }
+                row_end--;
+                i=(i+1)%4;
+            }
+            else{
+                int k=row_end;
+                while(k>=row_start){
+                    li.add(matrix[k][column_start]);
+                    k--;
+                }
+                column_start++;
+                i=(i+1)%4;
+            }
+        }
+        return li;
+    }
+}
