@@ -1,0 +1,60 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        // int n1=nums1.length;
+        // int n2=nums2.length;
+        // HashMap<Integer,Integer> mp=new HashMap<>();
+        // for(int x:nums1){
+        //     if(mp.containsKey(x)){
+        //         int y=mp.get(x);
+        //         y++;
+        //         mp.put(x,y);
+        //     }else{
+        //         mp.put(x,1);
+        //     }
+        // }
+        // ArrayList<Integer> arr=new ArrayList<>();
+        // for(int y:nums2){
+        //     if(mp.containsKey(y)){
+        //         int z=mp.get(y);
+        //         if(z!=0){
+        //             z--;
+        //             arr.add(y);
+        //             mp.put(y,z);
+        //         }
+        //     }
+        // }
+        // int[] ans=new int[arr.size()];
+        // int i=0;
+        // for(int x:arr){
+        //     ans[i++]=x;
+        // }
+        // return ans;
+        
+        //using two pointer
+        int i = 0;
+        int m = 0;
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        while(i < nums1.length && m < nums2.length){
+
+        if(nums1[i] == nums2[m]){
+        arr.add(nums1[i]);
+        i++;
+        m++;
+        }
+        else if (nums1[i] < nums2[m]){
+        i++;
+        }
+        else{
+        m++;
+        }
+
+        }
+        int[] arr1 = new int[arr.size()];
+        int k = 0;
+        for (int j : arr) arr1[k++] = j;
+        return arr1;
+    }
+}

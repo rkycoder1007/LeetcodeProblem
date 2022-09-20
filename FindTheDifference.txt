@@ -1,5 +1,31 @@
 class Solution {
     public char findTheDifference(String s, String t) {
+        // HashMap<Character,Integer> hs=new HashMap<>();
+        // int n=s.length();
+        // for(int i=0;i<n;i++){
+        //     char c=s.charAt(i);
+        //     if(hs.containsKey(c)){
+        //         int x=hs.get(c);
+        //         x++;
+        //         hs.put(c,x);
+        //     }else
+        //         hs.put(c,1);
+        // }
+        // for(int i=0;i<n+1;i++){
+        //     char c=t.charAt(i);
+        //     if(hs.containsKey(c)){
+        //         int x=hs.get(c);
+        //         if(x==0)
+        //             return c;
+        //         else{
+        //             x--;
+        //             hs.put(c,x);
+        //         }
+        //     }else
+        //         return c;
+        // }
+        // return 'a';
+        
         char[] s1=s.toCharArray();
         char[] t1=t.toCharArray();
         Arrays.sort(s1);
@@ -10,6 +36,5 @@ class Solution {
                 return t1[i];
         }
         return t1[n];
-        
     }
 }
